@@ -1,2 +1,3 @@
 # Mine-Incremental-Game
-undefined
+
+This is a game by me.
