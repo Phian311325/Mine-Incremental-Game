@@ -1,0 +1,770 @@
+/* ===== 1. 全域重置 ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: 'Segoe UI', 'Noto Sans TC', system-ui, sans-serif;
+}
+
+body {
+    background: #1a1a2e;
+    color: #eee;
+    padding: 16px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== 大按鈕（設定頁面專用） ===== */
+.Big-Btn {
+    background: #3a3a5e;
+    border: none;
+    color: #eee;
+    padding: 10px 28px;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    border: 1px solid transparent;
+    white-space: nowrap;
+}
+.Big-Btn:hover {
+    background: #4a4a7e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+.Big-Btn:active {
+    transform: translateY(1px) scale(0.96);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 危險按鈕（重置、導入等） */
+.Big-Btn.Damager {
+    background: #6a2a2a;
+    color: #ff8888;
+}
+.Big-Btn.Damager:hover {
+    background: #8a3a3a;
+    color: #ffaaaa;
+}
+.Big-Btn.Damager:active {
+    background: #5a1a1a;
+}
+
+/* 大按鈕的啟動狀態（主題切換用） */
+.Big-Btn.Active {
+    background: #ffcc66;
+    color: #1a1a2e;
+    border-color: #ffcc66;
+    box-shadow: 0 0 20px rgba(255, 200, 80, 0.3);
+    pointer-events: none;
+}
+.Big-Btn.Active:hover {
+    transform: none;
+    box-shadow: 0 0 20px rgba(255, 200, 80, 0.3);
+}
+
+/* 主題相關的額外點綴（可選） */
+#theme .Big-Btn {
+    min-width: 100px;
+}
+
+/* ===== 按鈕禁用狀態 ===== */
+button:disabled {
+    opacity: 0.4;
+    filter: grayscale(0.6);
+    pointer-events: none;
+    transform: none !important;
+}
+/* ===== 2. 主容器 ===== */
+.Game-Area {
+    max-width: 1400px;
+    width: 100%;
+    height: calc(100vh - 32px);
+    display: grid;
+    grid-template-rows: 60px 1fr 56px;
+    gap: 8px;
+    background: #22223a;
+    border-radius: 28px;
+    padding: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+    border: 1px solid #3a3a5a;
+}
+
+/* ===== 3. 標題區 ===== */
+.Header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #2a2a44;
+    border-radius: 20px;
+    padding: 8px 20px;
+    border-bottom: 2px solid #3a3a5a;
+}
+.Header .Title {
+    font-size: 28px;
+    font-weight: 900;
+    color: #ffcc66;
+    text-shadow: 0 0 20px rgba(255, 200, 80, 0.1);
+}
+.Header .Tips {
+    flex: 1;
+    overflow: hidden;
+    font-size: 16px;
+    color: #aaaacc;
+    margin-left: 20px;
+}
+.Header img {
+    border-radius: 8px;
+}
+
+/* ===== 4. 內容區（含滾動） ===== */
+.Area-Ctt {
+    background: #1a1a30;
+    border-radius: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 16px 20px;
+    position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: #3a3a5a #1a1a30;
+}
+.Area-Ctt::-webkit-scrollbar {
+    width: 6px;
+}
+.Area-Ctt::-webkit-scrollbar-track {
+    background: #1a1a30;
+}
+.Area-Ctt::-webkit-scrollbar-thumb {
+    background: #3a3a5a;
+    border-radius: 10px;
+}
+
+/* ===== 5. 區域頁面（切換用） ===== */
+.Area {
+    display: none;
+    width: 100%;
+    height: 100%;
+    padding: 4px 0;
+}
+.Area.Show {
+    display: block;
+}
+
+/* ===== 6. 標題 ===== */
+.Area h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffcc66;
+    margin: 20px 0 12px 0;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #333355;
+}
+.Area h2:first-of-type {
+    margin-top: 0;
+}
+
+/* ===== 7. 挖礦卡片（礦主/礦工） ===== */
+.A1-Worker {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #22223e;
+    border-radius: 18px;
+    padding: 12px 18px;
+    margin-bottom: 12px;
+    border: 1px solid #333355;
+}
+.A1-Role-Lbl {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffcc66;
+    background: #1a1a32;
+    padding: 6px 4px;
+    border-radius: 12px;
+    letter-spacing: 2px;
+}
+.A1-mine-Btn {
+    background: #3a3a5e;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.A1-mine-Btn:hover {
+    background: #4a4a7e;
+    transform: scale(1.05);
+}
+.A1-mine-Btn:active {
+    transform: scale(0.92);
+}
+.A1-mine-Btn.Disable {
+    opacity: 0.4;
+    filter: grayscale(0.5);
+    pointer-events: none;
+}
+.A1-mine-Btn img {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+}
+.A1-Mine-Desc {
+    flex: 1;
+    font-size: 15px;
+    color: #aaaacc;
+}
+.A1-Miner-Bar,
+.A1-Worker-Bar {
+    width: 160px;
+    height: 18px;
+    background: #1a1a2a;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+/* ===== 8. 資源列 ===== */
+.Ore-Dsp-Row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 14px;
+    background: #1e1e34;
+    border-radius: 16px;
+    padding: 10px 16px;
+    margin-bottom: 10px;
+}
+.Ore-Dsp-Row > * {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.Ore-Dsp-Row .messyStone-value,
+.Ore-Dsp-Row .ironOre-value,
+.Ore-Dsp-Row .goldOre-value,
+.Ore-Dsp-Row .diamondOre-value,
+.Ore-Dsp-Row .coal-value {
+    font-weight: 700;
+    font-size: 16px;
+    color: #ffcc66;
+    min-width: 48px;
+}
+.Ore-Dsp-Row img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+.Ore-Dsp-Row hr {
+    width: 1px;
+    height: 28px;
+    background: #444466;
+    border: none;
+    margin: 0 4px;
+}
+.Ore-Dsp-Row .Damager {
+    background: #6a2a2a;
+    color: #ff8888;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.Ore-Dsp-Row .Damager:hover {
+    background: #8a3a3a;
+}
+
+/* ===== 9. 方塊網格（升級/技能/市場/燒煉） ===== */
+.Craft-Block-Grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.Craft-Block {
+    background: #1e1e38;
+    border-radius: 16px;
+    padding: 14px 16px;
+    border: 1px solid #333355;
+    transition: 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.Craft-Block:hover {
+    border-color: #555588;
+}
+
+.Block-Dsp-Row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 15px;
+}
+.Block-Dsp-Row.Value {
+    font-weight: 700;
+    color: #ddd;
+}
+.Block-Dsp-Row.Right {
+    justify-content: flex-end;
+}
+.Block-Dsp-Row img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+.Block-Dsp-Row button {
+    background: #3a3a5e;
+    border: none;
+    color: #eee;
+    padding: 6px 16px;
+    border-radius: 40px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+.Block-Dsp-Row button:hover {
+    background: #4a4a7e;
+    transform: translateY(-1px);
+}
+.Block-Dsp-Row button:active {
+    transform: translateY(1px) scale(0.97);
+}
+.Block-Dsp-Row button img {
+    width: 20px;
+    height: 20px;
+}
+
+/* 技能專屬 */
+#a1-long,
+#a1-accyNormal,
+#a1-short,
+#a1-accyLong {
+    font-weight: 700;
+    padding: 2px 12px;
+    border-radius: 40px;
+    font-size: 14px;
+    margin-left: auto;
+}
+#a1-long:not(:empty):not(:contains("未習得")),
+#a1-accyNormal:not(:empty):not(:contains("未習得")),
+#a1-short:not(:empty):not(:contains("未習得")),
+#a1-accyLong:not(:empty):not(:contains("未習得")) {
+    background: #2a6a3a;
+    color: #88ff88;
+}
+#a1-long:empty,
+#a1-accyNormal:empty,
+#a1-short:empty,
+#a1-accyLong:empty {
+    background: #4a2a2a;
+    color: #ff6666;
+    padding: 2px 12px;
+    border-radius: 40px;
+    font-size: 14px;
+}
+#a1-long:empty::before,
+#a1-accyNormal:empty::before,
+#a1-short:empty::before,
+#a1-accyLong:empty::before {
+    content: "未習得";
+}
+
+/* ===== 10. 底部按鈕列 ===== */
+.Area-Bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #2a2a44;
+    border-radius: 20px;
+    padding: 6px 14px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+}
+.Area-Bar hr {
+    width: 1px;
+    height: 30px;
+    background: #444466;
+    border: none;
+    flex-shrink: 0;
+}
+.Area-Btn {
+    background: transparent;
+    border: none;
+    color: #8888bb;
+    padding: 6px 14px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.Area-Btn:hover {
+    background: #3a3a5e;
+    color: #ddd;
+}
+.Area-Btn.Active {
+    background: #4a4a7a;
+    color: #ffcc66;
+    pointer-events: none;
+}
+
+.Sub-Bar {
+    flex: 1;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+}
+.Sub-Area-Bar {
+    display: none;
+    gap: 4px;
+    flex: 1;
+}
+.Sub-Area-Bar.Show {
+    display: flex;
+}
+.Sub-Area-Bar .Area-Btn {
+    font-size: 13px;
+    padding: 4px 12px;
+}
+
+/* ===== 11. 隱藏彩蛋按鈕 ===== */
+#goal-iaa-btn {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    opacity: 0.15;
+    background: transparent;
+    border: none;
+    color: #666;
+    font-size: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#goal-iaa-btn:hover {
+    opacity: 0.6;
+    color: #ffcc66;
+}
+.Big-Btn.Invisible {
+    opacity: 0;                     /* 完全透明 */
+    pointer-events: auto;           /* 依然可以點擊（隱形按鈕） */
+    background: transparent !important; /* 強制隱藏背景 */
+    border-color: transparent !important;
+    box-shadow: none !important;
+    min-width: 0;                  /* 讓寬度收縮到最小 */
+    padding: 10px 6px;             /* 保留一點點點擊區域，但幾乎看不到 */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    color: transparent;            /* 文字也消失 */
+}
+/* 但滑鼠移過去時「微微浮現」給玩家一個彩蛋提示 */
+.Big-Btn.Invisible:hover {
+    opacity: 0.25;                 /* 微微看得到輪廓 */
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    transform: scale(1.02);
+    color: rgba(255, 255, 255, 0.3);
+}
+/* 如果是啟用狀態（被選中時）則顯示為低調彩蛋金 */
+.Big-Btn.Invisible.Active {
+    opacity: 0.6 !important;
+    background: rgba(255, 200, 80, 0.15) !important;
+    border-color: #ffcc66 !important;
+    color: #ffcc66 !important;
+    pointer-events: none;
+    box-shadow: 0 0 15px rgba(255, 200, 80, 0.1) !important;
+}
+
+
+/* ===== 設定按鈕列（響應式專用） ===== */
+.Setting-Btn-Row {
+    display: flex;
+    flex-wrap: wrap;           /* 讓按鈕自動換行 */
+    align-items: center;
+    gap: 12px;
+    background: #1e1e34;
+    border-radius: 16px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    border: 1px solid #333355;
+}
+
+/* 裡面的按鈕會自動適應寬度 */
+.Setting-Btn-Row .Big-Btn {
+    flex: 0 1 auto;            /* 不強迫拉伸，但允許縮小 */
+    min-width: 80px;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+/* ===== 隱藏成就：鎖定狀態 ===== */
+.Craft-Block.Goal-Locked {
+    opacity: 0.55;
+    filter: grayscale(0.9);
+    background: #14141e !important;
+    border-color: #2a2a3a !important;
+    box-shadow: none !important;
+    pointer-events: none;          /* 不可點擊 */
+    transition: 0.3s;
+}
+.Craft-Block.Goal-Locked .Block-Dsp-Row {
+    color: #555566;
+}
+.Craft-Block.Goal-Locked .Block-Dsp-Row.Value span:first-child {
+    color: #333344;
+}
+.Craft-Block.Goal-Locked .Block-Dsp-Row.Value span:last-child {
+    color: #3a3a4a;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+/* 鎖定時顯示小鎖圖標（純 CSS） */
+.Craft-Block.Goal-Locked .Block-Dsp-Row.Value::before {
+    content: "🔒 ";
+    font-size: 14px;
+    opacity: 0.4;
+}
+
+/* ===== 隱藏成就：解鎖狀態（彩蛋金光） ===== */
+.Craft-Block.Invisible-Unlocked {
+    border: 2px solid #ffcc66 !important;
+    background: #2a2a3e !important;
+    box-shadow: 0 0 30px rgba(255, 200, 80, 0.15), inset 0 0 30px rgba(255, 200, 80, 0.05);
+    animation: goalUnlockGlow 2s ease-in-out infinite alternate;
+    transition: 0.3s;
+}
+.Craft-Block.Invisible-Unlocked .Block-Dsp-Row.Value {
+    color: #ffcc66;
+}
+.Craft-Block.Invisible-Unlocked .Block-Dsp-Row.Value span:first-child {
+    color: #8888bb;
+}
+.Craft-Block.Invisible-Unlocked .Block-Dsp-Row {
+    color: #ccddff;
+}
+/* 解鎖時顯示獎盃圖標 */
+.Craft-Block.Invisible-Unlocked .Block-Dsp-Row.Value::before {
+    content: "🏆 ";
+    font-size: 16px;
+}
+/* ===== 版本日誌容器 ===== */
+.Pr {
+    background: rgba(26, 26, 46, 0.7);
+    border-radius: 16px;
+    padding: 16px 20px;
+    border: 1px solid #333355;
+    margin-top: 6px;
+    backdrop-filter: blur(2px);
+}
+
+/* ===== 版本日誌內的標籤文字 ===== */
+.Pr .Value {
+    color: #ffcc66;
+    font-weight: 600;
+    font-size: 15px;
+    display: block;
+    margin: 12px 0 4px 0;
+    letter-spacing: 0.5px;
+}
+.Pr .Value:first-of-type {
+    margin-top: 0;
+}
+
+/* ===== 列表樣式 ===== */
+.Pr ul {
+    margin: 4px 0 12px 20px;
+    padding-left: 6px;
+    list-style: none;
+}
+.Pr ul li {
+    color: #ccddff;
+    font-size: 14px;
+    padding: 3px 0 3px 24px;
+    position: relative;
+    line-height: 1.6;
+    border-bottom: 1px solid rgba(51, 51, 85, 0.2);
+}
+.Pr ul li:last-child {
+    border-bottom: none;
+}
+
+/* 自定義項目符號（礦坑風格） */
+.Pr ul li::before {
+    content: "◆";
+    color: #ffcc66;
+    position: absolute;
+    left: 0;
+    top: 3px;
+    font-size: 11px;
+    opacity: 0.5;
+}
+
+/* ===== 標題內的日期/版本號 ===== */
+h2 .Value {
+    color: #88ddff;
+    font-weight: 400;
+    font-size: 16px;
+    margin-left: 10px;
+    background: rgba(136, 221, 255, 0.08);
+    padding: 2px 12px;
+    border-radius: 40px;
+    border: 1px solid rgba(136, 221, 255, 0.15);
+}
+
+/* ===== 響應式（手機） ===== */
+@media (max-width: 600px) {
+    .Pr {
+        padding: 12px 14px;
+    }
+    .Pr ul li {
+        font-size: 13px;
+        padding-left: 20px;
+    }
+    .Pr ul li::before {
+        font-size: 10px;
+        top: 2px;
+    }
+    h2 .Value {
+        font-size: 13px;
+        padding: 1px 8px;
+        margin-left: 6px;
+    }
+}
+
+/* ===== 12. 響應式 ===== */
+@media (max-width: 800px) {
+    .Game-Area {
+        height: auto;
+        min-height: calc(100vh - 32px);
+        grid-template-rows: auto 1fr auto;
+        padding: 8px;
+        border-radius: 16px;
+    }
+    .Header .Title {
+        font-size: 20px;
+    }
+    .Header .Tips {
+        font-size: 13px;
+        margin-left: 8px;
+    }
+    .A1-Worker {
+        flex-wrap: wrap;
+    }
+    .A1-Miner-Bar,
+    .A1-Worker-Bar {
+        width: 100%;
+    }
+    .Craft-Block-Grid {
+        grid-template-columns: 1fr;
+    }
+    .Ore-Dsp-Row {
+        gap: 4px 10px;
+        font-size: 14px;
+    }
+    .Area-Bar {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 4px 8px;
+    }
+    .Area-Btn {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+}
+
+@keyframes SlideIn {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+.Animate-In {
+    animation: SlideIn 300ms ease forwards;
+}
+@keyframes SlideOut {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+.Animate-Out {
+    animation: SlideOut 300ms ease forwards;
+}
+/* 小螢幕時讓按鈕填滿或變大 */
+@media (max-width: 600px) {
+    .Setting-Btn-Row {
+        gap: 8px;
+        padding: 10px 12px;
+    }
+    .Setting-Btn-Row .Big-Btn {
+        flex: 1 1 calc(50% - 8px);  /* 兩欄排列 */
+        min-width: 60px;
+        padding: 10px 12px;
+        font-size: 14px;
+        justify-content: center;
+    }
+}
+
+/* 超小螢幕（手機窄屏） */
+@media (max-width: 400px) {
+    .Setting-Btn-Row .Big-Btn {
+        flex: 1 1 100%;        /* 單欄滿版 */
+        padding: 12px 16px;
+        font-size: 15px;
+    }
+    .Setting-Btn-Row .Big-Btn.Invisible {
+        flex: 0 0 0;           /* 隱藏按鈕不佔空間 */
+        min-width: 0;
+        padding: 0 4px;
+    }
+}
+
+
+/* ===== 解鎖動畫（微微呼吸光暈） ===== */
+@keyframes goalUnlockGlow {
+    0% {
+        box-shadow: 0 0 20px rgba(255, 200, 80, 0.1), inset 0 0 20px rgba(255, 200, 80, 0.02);
+        border-color: #ccaa55;
+    }
+    100% {
+        box-shadow: 0 0 40px rgba(255, 200, 80, 0.25), inset 0 0 40px rgba(255, 200, 80, 0.08);
+        border-color: #ffdd88;
+    }
+}
+
+/* ===== 響應式調整 ===== */
+@media (max-width: 600px) {
+    .Craft-Block.Goal-Locked .Block-Dsp-Row.Value::before,
+    .Craft-Block.Invisible-Unlocked .Block-Dsp-Row.Value::before {
+        font-size: 12px;
+    }
+}

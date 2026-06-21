@@ -1,0 +1,540 @@
+/*全域*/
+* {
+    font-family: "Noto Sans TC";
+}
+/*基礎 css*/
+body {
+    background-color: #111111ff;
+}
+h2 {
+    font-size: 30px;
+    padding: 0 2px;
+    margin: 0;
+    width: 100%;
+    color: #eeeeeeff;
+    background-color: #33333388;
+}
+button {
+    display: inline-flex;
+    height: 34px;
+    justify-content: center;
+    background-color: #202080ff;
+    border: 2px solid #888888ff;
+    border-bottom: 8px solid #2828a0ff;
+    box-shadow: 0 1px #888888ff;
+    color: #eeeeeeff;
+    transition: all 100ms ease;
+}
+button::not(.A1-mine-Btn)::not(.A1-Worker-Btn) > img {
+    width: 20px;
+    height: 20px;
+}
+button:hover {
+    background-color: #2828a0ff;
+    border: 2px solid #ccccccff;
+    border-bottom: 8px solid #3030c0ff;
+    box-shadow: 0 1px #ccccccff;
+}
+button:active {
+    height: 28px;
+    border-bottom: 1px solid #ccccccff;
+    margin-top: 6px;
+}
+hr {
+    margin: 0;
+    border: 1px solid #eeeeeeff;
+}
+ul, ol {
+    padding-left: 32px;
+    margin: 4px 0;
+}
+ul > li {
+    list-style: '— ';
+    color: #aaaaaaff;
+}
+h2 > .Value {
+    color: #aaaaaaff;
+}
+h2 > .Value::before {
+    content: '[';
+}
+h2 > .Value::after {
+    content: ']';
+}
+.Pr {
+    display: block;
+    margin: 4px 8px;
+}
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+::-webkit-scrollbar-track {
+    background: #333333ff;
+    border-radius: 0;
+}
+::-webkit-scrollbar-thumb {
+    background: #555555ff;
+    border-radius: 0;
+    transition: all 150ms ease;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #ffffffff;
+}
+
+/*其他按鈕*/
+button.Damager {
+    border: 2px solid #888888ff;
+    border-bottom: 8px solid #cc0000ff;
+    background-color: #ff0000ff;
+    box-shadow: 0 1px #888888ff;
+}
+button.Damager:hover {
+    border: 2px solid #888888ff;
+    border-bottom: 8px solid #aa0000ff;
+    box-shadow: 0 1px #888888ff
+}
+button.Damager:active {
+    height: 28px;
+    border-bottom: 1px solid #888888ff;
+    margin-top: 6px;
+}
+button.Big-Btn {
+    height: 42px;
+    padding: 2px 16px;
+    font-size: 16px;
+}
+button.Big-Btn:active {
+    height: 36px;
+}
+button.Big-Btn.Active {
+    height: 36px;
+    border-bottom: 1px solid #888888ff;
+    pointer-events: none;
+    margin-top: 6px;
+}
+
+/*特殊容器*/
+.Ore-Dsp-Row {
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+    line-height: 1;
+    align-items: center;
+}
+.Ore-Dsp-Row > hr {
+    height: 20px;
+}
+.Ore-Dsp-Row > img {
+    width: 25px;
+    height: 25px;
+}
+.Block-Dsp-Row {
+    display: flex;
+    gap: 8px;
+    padding: 4px 8px;
+    line-height: 1;
+    align-items: center;
+}
+.Block-Dsp-Row > hr {
+    height: 20px;
+}
+.Block-Dsp-Row > img {
+    width: 25px;
+    height: 25px;
+}
+.Setting-Btn-Row {
+    display: flex;
+    gap: 8px;
+    padding: 4px 8px;
+    line-height: 1;
+    align-items: center;
+}
+.Block-Dsp-Row > hr {
+    height: 20px;
+}
+.Block-Dsp-Row > img {
+    width: 25px;
+    height: 25px;
+}
+.Value {
+    font-size: 20px;
+}
+.messyStone-value {
+    font-size: 20px;
+    color: #666666ff;
+    text-shadow: 0 0 4px #666666ff;
+}
+.coal-value {
+    font-size: 20px;
+    color: #444444ff;
+    text-shadow: 0 0 4px #444444ff;
+}
+.ironOre-value {
+    font-size: 20px;
+    color: #e6e6e6ff;
+    text-shadow: 0 0 4px #e6e6e6ff;
+}
+.goldOre-value {
+    font-size: 20px;
+    color: #ffcc00ff;
+    text-shadow: 0 0 4px #ffcc00ff;
+}
+.diamondOre-value {
+    font-size: 20px;
+    color: #00ffffff;
+    text-shadow: 0 0 4px #00ffffff;
+}
+.Upg-Value {
+    color: #00cc00ff;
+    text-shadow: 0 0 4px #00cc00ff;
+}
+.Craft-Block-Grid {
+    display: grid;
+    grid-template-columns: 308px 308px 308px;
+    gap: 8px;
+    padding: 8px;
+}
+.Craft-Block {
+    padding: 8px;
+    background-color: #000000ff;
+    border: 2px solid #ddddddff;
+    box-shadow: 0 0 0 1px #dddddd22, 0 0 0 2px #dddddd22, 0 0 0 3px #dddddd22, 0 0 0 4px #dddddd22;
+    width: 288px;
+    height: auto;
+}
+.Act {
+    grid-area: Act;
+}
+.Act-B {
+    grid-area: Act-B;
+}
+
+/*主區域*/
+.Game-Area {
+    display: grid;
+    grid-template-rows: 52px 1fr 46px;
+    gap: 2px;
+    color: #eeeeeeff;
+    background-color: #eeeeeeff;
+    box-shadow: 0 0 8px #ffffffff;
+    padding: 2px;
+    margin: 8px auto;
+    width: 976px;
+    height: calc(100vh - 20px);
+}
+
+/*標題列*/
+.Header {
+    display: flex;
+    gap: 8px;
+    overflow: hidden;
+    color: #eeeeeeff;
+    background-color: #111111ff;
+    padding: 8px;
+    line-height: 1.2;
+    align-items: end;
+}
+.Title {
+    margin: 0;
+    padding: 0;
+    font-size: 32px;
+}
+.Tips {
+    font-size: 20px;
+    overflow: hidden;
+    height: 36px;
+    width: 776px;
+    background-color: #111111ff;
+    position: relative;
+    line-height: 36px;
+}
+
+.Tip-Text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: marquee 10000ms linear infinite;
+    padding-left: 100%;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-200%);
+    }
+}
+
+
+/*區域按鈕排*/
+.Area-Bar {
+    display: flex;
+    gap: 8px;
+    background-color: #111111ff;
+    padding: 8px;
+}
+.Area-Btn {
+    background-color: #11451400;
+    border: 0 solid #11451400;
+    height: 30px;
+    font-size: 16px;
+}
+.Area-Btn:hover {
+    border: 0 solid #11451400;
+    background-color: #ffffff11;
+    box-shadow: 0 1px #eeeeeeff, 0 0 0 2px #ffffff08;
+}
+.Area-Btn.Active {
+    height: 28px;
+    border-bottom: 2px solid #eeeeeeff;
+    box-shadow: 0 1px #ffffff11, 0 2px #ffffff11, 0 3px #ffffff11, 0 4px #ffffff11, 0 5px #ffffff11, 0 6px #ffffff11,0 7px #ffffff11 ;
+    pointer-events: none;
+}
+
+/*子區域按鈕排*/
+.Sub-Bar {
+    position: relative;
+    overflow: hidden;
+    flex-grow: 1;
+    height: 32px;
+}
+.Sub-Area-Bar {
+    display: none;
+    gap: 8px;
+    overflow-x: scroll;
+    width: 100%;
+    height: 32px;
+}
+.Sub-Area-Bar.Show {
+    display: flex;
+}
+.Sub-Area-Bar.Active {
+    box-shadow: 0 1px #ffffff11, 0 2px #ffffff11, 0 3px #ffffff11, 0 4px #ffffff11, 0 5px #ffffff11, 0 6px #ffffff11,0 7px #ffffff11 ;
+}
+.Sub-Area-Bar::-webkit-scrollbar {
+    display: none;
+}
+
+/*區域*/
+.Area-Ctt {
+    overflow: hidden;
+    position: relative;
+}
+.Area {
+    display: none;
+    background-color: #111111ff;
+    padding: 8px;
+    overflow-y: auto;
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+}
+.Area > div {
+    width: 100%;
+}
+.Show {
+    display: flex;
+    position: absolute;
+}
+
+/*區域一*/
+.A1-Worker {
+    display: grid;
+    grid-template-columns: 25px 6px 50px 8px 1fr;
+    grid-template-rows: 25px 25px;
+    grid-template-areas: 'Role ... Btn ... Desc' 'Role ... Btn ... Bar';
+    padding: 8px;
+    align-items: center;
+}
+.A1-mine-Btn {
+    grid-area: Btn;
+    border-bottom: 2px solid #888888ff;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    box-shadow: none;
+    background-color: #111111ff;
+}
+.A1-mine-Btn:hover {
+    border-bottom: 2px solid #ccccccff;
+    box-shadow: none;
+    background-color: #000000ff;
+}
+.A1-mine-Btn:active {
+    height: 50px;
+    margin: 0;
+    background-color: #111111ff;
+}
+.A1-Miner-Bar {
+    grid-area: Bar;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 0 0 1px #ffffff22, 0 0 0 2px #ffffff22, 0 0 0 3px #ffffff22;
+    background-color: #111111ff;
+}
+.A1-Worker-Bar {
+    grid-area: Bar;
+    height: 100%;
+    width: 100%;
+    background-color: #000000ff;
+    box-shadow: 0 0 0 1px #ffffff22, 0 0 0 2px #ffffff22, 0 0 0 3px #ffffff22;
+}
+.A1-Progress {
+    background-color: #11451400;
+    border-right: 2px solid #666666ff;
+    height: 25px;
+    width: 10%;
+}
+.A1-Mine-Desc {
+    grid-area: Desc;
+}
+.A1-Role-Lbl {
+    grid-area: Role;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    border-right: 2px solid #888888ff;
+    font-size: 20px;
+}
+
+/*成就*/
+.Invisible-Unlocked {
+    border: 2px solid #cc00ccff;
+    background-color: #cc00cc33;
+    color: #cc00ccff;
+    box-shadow: 0 0 0 1px #ee00ee22, 0 0 0 2px #ee00ee22, 0 0 0 3px #ee00ee22, 0 0 0 4px #ee00ee22;
+}
+.Goal-Locked {
+    border: 2px solid #666666ff;
+    color: #666666ff;
+    box-shadow: 0 0 0 1px #88888822, 0 0 0 2px #88888822, 0 0 0 3px #88888822, 0 0 0 4px #88888822;
+}
+
+/*最終狀態*/
+.Disable {
+    pointer-events: none;
+}
+.Lbl {
+    font-size: 20px;
+}
+.Right {
+    justify-content: end;
+}
+.Invisible {
+    opacity: 0;
+}
+.Invisible:hover {
+    opacity: 0.05;
+}
+
+/*動畫*/
+@keyframes SlideIn {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+.Animate-In {
+    animation: SlideIn 300ms ease forwards;
+}
+@keyframes SlideOut {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+.Animate-Out {
+    animation: SlideOut 300ms ease forwards;
+}
+
+/*響應式*/
+@media (min-width: 2048px) {
+    .Game-Area {
+        width: 1608px;
+    }
+    .Craft-Block-Grid {
+        grid-template-columns: 308px 308px 308px 308px 308px;
+    }
+    .Tips {
+        width: 1408px;
+    }
+}
+@media (max-width: 1024px) {
+    html {
+        height: 100vh;
+        overflow: hidden;
+    }
+    body {
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+    .Game-Area {
+        height: 100vh;
+        width: 100vw;
+        grid-template-rows: 88px 1fr 84px;
+        margin: 0;
+    }
+    .Header {
+        display: grid;
+        grid-template-columns: 36px 8px 1fr;
+        grid-template-rows: 36px 28px;
+        grid-template-areas: 'Icon ... Title' 'Tips Tips Tips';
+        gap: 8px;
+    }
+    .Header > img {
+        grid-area: Icon;
+    }
+    .Title {
+        grid-area: Title;
+    }
+    .Tips {
+        height: 28px;
+        width: calc(100vw - 16px);
+        grid-area: Tips;
+        background-color: #88888833;
+    }
+    .Tip-Text {
+        line-height: 1;
+    }
+    .Ore-Dsp-Row {
+        overflow-x: scroll;
+    }
+    .Area-Bar {
+        display: block;
+    }
+    .Craft-Block-Grid {
+        overflow-x: scroll;
+        grid-template-columns: auto auto auto auto auto ;
+    }
+    .Area-Bar > hr {
+        margin: 4px;
+    }
+    .Invisible {
+        opacity: 0.025;
+    }   
+}
+@media (max-width: 768px) {
+    .Setting-Btn-Row {
+        padding: 4px 8px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+    .Block-Dsp-Row > hr {
+        height: 20px;
+    }
+    .Block-Dsp-Row > img {
+        width: 25px;
+        height: 25px;
+    }
+}
+@media (max-width: 384px) {
+    h2 > .Value {
+        display: block;
+    }
+}

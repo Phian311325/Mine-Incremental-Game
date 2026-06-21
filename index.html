@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>礦坑增量</title>
+        <link id="style" rel="stylesheet" href="./style/Original.css">
+    </head>
+    <body>
+        <div class="Game-Area">
+            <div class="Header">
+                <img src="./image/a1Pickaxe.png" width="36px" height="36px">
+                <h1 class="Title">礦坑增量</h1>
+                <div class="Tips">
+                    <div class="Tip-Text" id="tip-text">本遊戲由 PhianNaloE 製作</div>
+                </div>
+            </div>
+            <div class="Area-Ctt">
+                <div class="Area Show" id="area-a-ctt">
+                    <div>
+                        <h2>挖礦</h2>
+                        <div class="A1-Worker">
+                            <div class="A1-Role-Lbl">礦主</div>
+                            <button class="A1-mine-Btn" id="a1-miner-btn">
+                                <img width="46px" height="46px" src="./image/a1Miner.png">
+                            </button>
+                            <div class="A1-Mine-Desc">←長按開挖</div>
+                            <canvas class="A1-Miner-Bar">
+                        </div>
+                        <div class="A1-Worker">
+                            <div class="A1-Role-Lbl">礦工</div>
+                            <button class="A1-mine-Btn Disable" id="a1-worker-btn">
+                                <img width="46px" height="46px" src="./image/a1Worker.png">
+                            </button>
+                            <div class="A1-Mine-Desc" id="a1-worker-prog">尚未雇傭</div>
+                            <canvas class="A1-Worker-Bar">
+                        </div>
+                        <h2>資源</h2>
+                        <div class="Ore-Dsp-Row">
+                            <div class="messyStone-value" id="a1-messyStone-value">0.00</div>
+                            <img src="./image/messyStone.png"><br>  
+                            <div class="ironOre-value" id="a1-ironOre-value">0.00</div>                          
+                            <img src="./image/ironOre.png"><br>  
+                            <div class="goldOre-value" id="a1-goldOre-value">0.00</div>
+                            <img src="./image/goldOre.png"><br>
+                            <div class="diamondOre-value" id="a1-diamondOre-value">0.00</div>
+                            <img src="./image/diamondOre.png"><hr>
+                            <div class="coal-value" id="a1-coal-value">0.00</div>
+                            <img src="./image/coal.png">
+                        </div>
+                        <div class="Ore-Dsp-Row">
+                            <div class="messyStone-value" id="a1-stone-value">0.00</div>
+                            <img src="./image/stone.png"><br>
+                            <div class="ironOre-value" id="a1-ironIngot-value">0.00</div>
+                            <img src="./image/ironIngot.png"><br>
+                            <div class="goldOre-value" id="a1-goldIngot-value">0.00</div>
+                            <img src="./image/goldIngot.png"><br>
+                            <div class="diamondOre-value" id="a1-diamond-value">0.00</div>
+                            <img src="./image/diamond.png"><hr>
+                            <div class="goldOre-value" id="a1-goldCoin-value">0.00</div>
+                            <img src="./image/goldCoin.png">
+                        </div>
+                        <h2>升級</h2>
+                        <div class="Craft-Block-Grid">
+                            <div class="Craft-Block">
+                                <div class="Block-Dsp-Row Value"><img src="./image/a1Miner.png">
+                                                                 礦主<span id="a1-miner-lvl">Lvl.0</span>/<span id="a1-miner-max">28</span></div>
+                                <div class="Block-Dsp-Row">礦物產出倍率:<span id="a1-miner-effect">1</span>倍</div>
+                                <div class="Block-Dsp-Row Right"><button id="a1-miner-cost">升級: 消耗 5 <img src="./image/messyStone.png"></button></div>
+                            </div>
+                            <div class="Craft-Block">
+                                <div class="Block-Dsp-Row Value"><img src="./image/a1Worker.png">
+                                                                 礦工<span id="a1-worker-lvl">Lvl.0</span>/<span id="a1-worker-max">20</span></div>
+                                <div class="Block-Dsp-Row">自動挖礦速率倍率:<span id="a1-worker-effect">0</span>倍</div>
+                                <div class="Block-Dsp-Row Right"><button id="a1-worker-cost">升級: 消耗 5 <img src="./image/ironOre.png"></button></div>
+                            </div>
+                            <div class="Craft-Block">
+                                <div class="Block-Dsp-Row Value"><img src="./image/a1Ore.png">
+                                                                 礦脈<span id="a1-ore-lvl">Lvl.0</span>/<span id="a1-ore-max">18</span></div>
+                                <div class="Block-Dsp-Row">礦物權重倍率:<span id="a1-ore-effect">1</span>倍</div>
+                                <div class="Block-Dsp-Row Right"><button id="a1-ore-cost">升級: 消耗 64 <img src="./image/goldCoin.png"></button></div>
+                            </div>
+                            <div class="Craft-Block">
+                                <div class="Block-Dsp-Row Value"><img src="./image/a1Accy.png">
+                                                                 判定<span id="a1-accy-lvl">Lvl.0</span>/<span id="a1-accy-max">12</span></div>
+                                <div class="Block-Dsp-Row">精準判定寬度: ±<span id="a1-accy-effect">10</span>ms</div>
+                                <div class="Block-Dsp-Row Right"><button id="a1-accy-cost">升級: 消耗 30 <img src="./image/goldOre.png"></button></div>
+                            </div>
+                            <div class="Craft-Block">
+                                <div class="Block-Dsp-Row Value"><img src="./image/a1Pickaxe.png">
+                                                                 礦鎬<span id="a1-pickaxe-lvl">Lvl.0</span>/<span id="a1-pickaxe-max">4</span></div>
+                                <div class="Block-Dsp-Row">挖掘時長倍率: <span id="a1-pickaxe-effect">1</span>倍</div>
+                                <div class="Block-Dsp-Row Right"><button id="a1-pickaxe-cost">升級: 消耗 10 <img src="./image/stone.png"></button></div>
+                            </div>
+                        </div>
+                        <h2>技能</h2>
+                        <div class="Craft-Block-Grid">
+                            <div class="Craft-Block">
+                                <div class="Block-Dsp-Row Value"><img src="./image/a1MineLong.png">蓄力採集<span id="a1-long"></span></div>
+                                <div class="Block-Dsp-Row Right"><button id="a1-long-cost">學習: 消耗 5 <img src="./image/diamondOre.png"></button></div>
+                            </div>
+                            <div class="Craft-Block">
+                                <div class="Block-Dsp-Row Value"><img src="./image/a1AccyNormal.png">精準採集<span id="a1-accyNormal"></span></div>
+                                <div class="Block-Dsp-Row Right"><button id="a1-accyNormal-cost">學習: 消耗 15 <img src="./image/goldOre.png"></button></div>
+                            </div>
+                            <div class="Craft-Block">
+                                <div class="Block-Dsp-Row Value"><img src="./image/a1MineShort.png">略微採集<span id="a1-short"></span></div>
+                                <div class="Block-Dsp-Row Right"><button id="a1-short-cost">學習: 消耗 20 <img src="./image/diamondOre.png"></button></div>
+                            </div>
+                            <div class="Craft-Block">
+                                <div class="Block-Dsp-Row Value"><img src="./image/a1AccyLong.png">蓄力精準採集<span id="a1-accyLong"></span></div>
+                                <div class="Block-Dsp-Row Right"><button id="a1-accyLong-cost">學習: 消耗 50 <img src="./image/goldOre.png"></button></div>
+                            </div>
+                        </div>
+                        <h2>市場</h2>
+                        <div class="Craft-Block-Grid" id="a1-sell-grid">
+                            <!-- 由 JavaScript 動態生成 -->
+                        </div>
+                        <h2>燒煉</h2>
+                        <div class="Craft-Block-Grid" id="a1-burn-grid">
+                            <!-- 由 JavaScript 動態生成 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="Area" id="area-b-ctt">
+                    <div>
+                        <div>區域 B</div>
+                    </div>
+                </div>
+                <div class="Area" id="area-c-ctt">
+                    <div>
+                        <div>區域 C</div>
+                    </div>
+                </div>
+                <div class="Area" id="area-ca-ctt">
+                    <div>
+                        <div class="Craft-Block-Grid" id="invisible-goal-list">
+                            <!-- 由 JavaScript 動態生成 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="Area " id="area-d-ctt">
+                    <div>
+                        <h2>樣式</h2>
+                        <div class="Setting-Btn-Row" id="theme">
+                            <button class="Big-Btn" id="礦洞亮-theme">礦洞亮</button>
+                            <button class="Big-Btn" id="科技暗-theme">科技暗</button>
+                            <button class="Big-Btn Invisible" id="ferygwgghhyu-theme">ferygwgghhyu</button>
+                        </div>
+                        <h2>存檔</h2>
+                        <div class="Setting-Btn-Row">
+                            <button class="Big-Btn" id="save-game-btn">強制存檔</button>
+                            <button class="Big-Btn" id="export-game-btn">導出進度檔</button>
+                            <button class="Damager Big-Btn" id="import-reset-btn">導入進度檔</button>
+                            <button class="Damager Big-Btn" id="hard-reset-btn">硬重置</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="Area" id="area-e-ctt">
+                    <div>
+                        <div>區域 E</div>
+                    </div>
+                </div>
+                <div class="Area" id="area-ea-ctt">
+                    <div>
+                        <h2>礦坑增量 v0.0.1 <span class='Value'>2026-06-21</span></h2>
+                        <div class='Pr'>
+                            <div class='Value'>新增主區域一層遊戲內容（平衡性未測試）</div>
+                            <ul>
+                                <li>1層的挖礦機制（長按手動挖礦、自動挖礦）</li>
+                                <li>資源：碎石、鐵礦、金礦、鑽石礦、煤炭、石頭、鐵錠、金錠、鑽石、金幣</li>
+                                <li>資源轉化：市場、燒煉</li>
+                                <li>提升：5 項升級、4 項技能</li>
+                            </ul>
+                            <div class='Value'>新增 16 條 Tips</div>
+                            <div class='Value'>新增 0 條成就</div>
+                            <div class='Value'>新增 3 條隱藏成就</div>
+                            <div class='Value'>出現的問題</div>
+                            <ul>
+                                <li>礦物權重、升級成本、挖掘時長尚未經過完整測試</li>
+                                <li>轉區域太快導致區域重疊或未顯示區域（已列為特性）</li>
+                                <li>成就、介紹、教學為空</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="Area" id="area-f-ctt">
+                    <div>
+                        <div>區域 F</div>
+                    </div>
+                </div>
+                <button id="goal-iaa-btn">點此獲取成就</button>
+            </div>
+            <div class="Area-Bar">
+                <button class="Area-Btn Active" id="area-a-btn">主區域</button>
+                <button class="Area-Btn" id="area-b-btn">秘境</button>
+                <button class="Area-Btn" id="area-c-btn">成就</button>
+                <button class="Area-Btn" id="area-d-btn">設定</button>
+                <button class="Area-Btn" id="area-e-btn">介紹</button>
+                <button class="Area-Btn" id="area-f-btn">教學</button>
+                <hr>
+                <div class="Sub-Bar">
+                    <div class="Sub-Area-Bar Show" id="sub-a-bar">
+                        <button class="Area-Btn Active" id="sub-a-btn">一層</button>
+                    </div>
+                    <div class="Sub-Area-Bar" id="sub-b-bar">
+                        <button class="Area-Btn Active" id="sub-b-btn">秘境</button>
+                    </div>
+                    <div class="Sub-Area-Bar" id="sub-c-bar">
+                        <button class="Area-Btn Active" id="sub-c-btn">普通成就</button>
+                        <button class="Area-Btn" id="sub-ca-btn">隱藏成就</button>
+                    </div>
+                    <div class="Sub-Area-Bar" id="sub-d-bar">
+                        <button class="Area-Btn Active" id="sub-d-btn">設定</button>
+                    </div>
+                    <div class="Sub-Area-Bar" id="sub-e-bar">
+                        <button class="Area-Btn Active" id="sub-e-btn">介紹</button>
+                        <button class="Area-Btn" id="sub-ea-btn">版本日誌</button>
+                    </div>
+                    <div class="Sub-Area-Bar" id="sub-f-bar">
+                        <button class="Area-Btn Active" id="sub-f-btn">教學</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="./script/data.js"></script>
+        <script src="./script/func.js"></script>
+        <script src="./script/goal.js"></script>
+        <script src="./script/game.js"></script>
+        <script src="./script/ara1.js"></script>
+        <script src="./script/sett.js"></script>
+    </body>
+</html>
