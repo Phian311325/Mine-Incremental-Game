@@ -12,7 +12,7 @@
                 <img src="./image/a1Pickaxe.png" width="36px" height="36px">
                 <h1 class="Title">礦坑增量</h1>
                 <div class="Tips">
-                    <div class="Tip-Text" id="tip-text">本遊戲由 PhianNaloE 製作</div>
+                    <div class="Tip-Text" id="tip-text">本遊戲由 PhianNaloE 製作。</div>
                 </div>
             </div>
             <div class="Area-Ctt">
@@ -63,34 +63,61 @@
                         <h2>升級</h2>
                         <div class="Craft-Block-Grid">
                             <div class="Craft-Block">
-                                <div class="Block-Dsp-Row Value"><img src="./image/a1Miner.png">
-                                                                 礦主<span id="a1-miner-lvl">Lvl.0</span>/<span id="a1-miner-max">28</span></div>
+                                <div class="Block-Dsp-Row Value"><img src="./image/a1Miner.png">礦主<span id="a1-miner-lvl"></span></div>
                                 <div class="Block-Dsp-Row">礦物產出倍率:<span id="a1-miner-effect">1</span>倍</div>
-                                <div class="Block-Dsp-Row Right"><button id="a1-miner-cost">升級: 消耗 5 <img src="./image/messyStone.png"></button></div>
+                                <div class="Block-Dsp-Row Right"><button id="a1-miner-cost"></button></div>
                             </div>
                             <div class="Craft-Block">
-                                <div class="Block-Dsp-Row Value"><img src="./image/a1Worker.png">
-                                                                 礦工<span id="a1-worker-lvl">Lvl.0</span>/<span id="a1-worker-max">20</span></div>
+                                <div class="Block-Dsp-Row Value"><img src="./image/a1Worker.png">礦工<span id="a1-worker-lvl"></span></div>
                                 <div class="Block-Dsp-Row">自動挖礦速率倍率:<span id="a1-worker-effect">0</span>倍</div>
-                                <div class="Block-Dsp-Row Right"><button id="a1-worker-cost">升級: 消耗 5 <img src="./image/ironOre.png"></button></div>
+                                <div class="Block-Dsp-Row Right"><button id="a1-worker-cost"></div>
                             </div>
                             <div class="Craft-Block">
-                                <div class="Block-Dsp-Row Value"><img src="./image/a1Ore.png">
-                                                                 礦脈<span id="a1-ore-lvl">Lvl.0</span>/<span id="a1-ore-max">18</span></div>
+                                <div class="Block-Dsp-Row Value"><img src="./image/a1Ore.png">礦脈<span id="a1-ore-lvl"></span></div>
                                 <div class="Block-Dsp-Row">礦物權重倍率:<span id="a1-ore-effect">1</span>倍</div>
-                                <div class="Block-Dsp-Row Right"><button id="a1-ore-cost">升級: 消耗 64 <img src="./image/goldCoin.png"></button></div>
+                                <div class="Block-Dsp-Row Right">
+                                    <button class="Info" id="a1-ore-chance-btn">礦物實際概率
+                                        <div class="Float-Content" id="ore-chance-display">
+                                            <!-- JS 動態填入內容 -->
+                                        </div>
+                                    </button>
+                                    <button id="a1-ore-cost"></button>
+                                </div>    
                             </div>
                             <div class="Craft-Block">
-                                <div class="Block-Dsp-Row Value"><img src="./image/a1Accy.png">
-                                                                 判定<span id="a1-accy-lvl">Lvl.0</span>/<span id="a1-accy-max">12</span></div>
-                                <div class="Block-Dsp-Row">精準判定寬度: ±<span id="a1-accy-effect">10</span>ms</div>
-                                <div class="Block-Dsp-Row Right"><button id="a1-accy-cost">升級: 消耗 30 <img src="./image/goldOre.png"></button></div>
+                                <div class="Block-Dsp-Row Value"><img src="./image/a1Accy.png">判定<span id="a1-accy-lvl"></span></div>
+                                <div class="Block-Dsp-Row">精準判定寬度:&nbsp;&nbsp;±<span id="a1-accy-effect">10</span>ms</div>
+                                <div class="Block-Dsp-Row Right"><button id="a1-accy-cost"></button></div>
                             </div>
                             <div class="Craft-Block">
-                                <div class="Block-Dsp-Row Value"><img src="./image/a1Pickaxe.png">
-                                                                 礦鎬<span id="a1-pickaxe-lvl">Lvl.0</span>/<span id="a1-pickaxe-max">4</span></div>
+                                <div class="Block-Dsp-Row Value"><img src="./image/a1CritRate.png">會心<span id="a1-critRate-lvl"></span></div>
+                                <div class="Block-Dsp-Row">爆擊率: <span id="a1-critRate-effect">4.00</span>%</div>
+                                <div class="Block-Dsp-Row Right"><button id="a1-critRate-cost"></button></div>
+                            </div>
+                            <div class="Craft-Block">
+                                <div class="Block-Dsp-Row Value"><img src="./image/a1CritDmg.png">心脈<span id="a1-critDmg-lvl"></span></div>
+                                <div class="Block-Dsp-Row">爆擊產出倍率: <span id="a1-critDmg-effect">1.50</span>倍</div>
+                                <div class="Block-Dsp-Row Right"><button id="a1-critDmg-cost"></button></div>
+                            </div>
+                            <div class="Craft-Block">
+                                <div class="Block-Dsp-Row Value"><img src="./image/a1Power.png">力量<span id="a1-power-lvl">Lvl.0</span></div>
+                                <div class="Block-Dsp-Row">蓄力採集產出倍率: <span id="a1-power-effect">1.00</span>倍</div>
+                                <div class="Block-Dsp-Row Right"><button id="a1-power-cost"></button></div>
+                            </div>
+                            <div class="Craft-Block">
+                                <div class="Block-Dsp-Row Value"><img src="./image/a1Short.png">兜底<span id="a1-shortT-lvl">Lvl.0</span></div>
+                                <div class="Block-Dsp-Row">略微採集時長: <span id="a1-shortT-effect">16</span>%</div>
+                                <div class="Block-Dsp-Row Right"><button id="a1-shortT-cost"></button></div>
+                            </div>
+                            <div class="Craft-Block">
+                                <div class="Block-Dsp-Row Value"><img src="./image/a1Precise.png">判分<span id="a1-precise-lvl">Lvl.0</span></div>
+                                <div class="Block-Dsp-Row">精準倍率: <span id="a1-precise-effect">1.50</span>倍</div>
+                                <div class="Block-Dsp-Row Right"><button id="a1-precise-cost"></button></div>
+                            </div>
+                            <div class="Craft-Block">
+                                <div class="Block-Dsp-Row Value"><img src="./image/a1Pickaxe.png">礦鎬<span id="a1-pickaxe-lvl"></span></div>
                                 <div class="Block-Dsp-Row">挖掘時長倍率: <span id="a1-pickaxe-effect">1</span>倍</div>
-                                <div class="Block-Dsp-Row Right"><button id="a1-pickaxe-cost">升級: 消耗 10 <img src="./image/stone.png"></button></div>
+                                <div class="Block-Dsp-Row Right"><button id="a1-pickaxe-cost"></button></div>
                             </div>
                         </div>
                         <h2>技能</h2>
@@ -145,6 +172,8 @@
                         <div class="Setting-Btn-Row" id="theme">
                             <button class="Big-Btn" id="礦洞亮-theme">礦洞亮</button>
                             <button class="Big-Btn" id="科技暗-theme">科技暗</button>
+                            <button class="Big-Btn" id="極致亮-theme">極致亮</button>
+                            <button class="Big-Btn" id="????????????-theme" style="display: none;">????????????</button>
                             <button class="Big-Btn Invisible" id="ferygwgghhyu-theme">ferygwgghhyu</button>
                         </div>
                         <h2>存檔</h2>
@@ -158,12 +187,45 @@
                 </div>
                 <div class="Area" id="area-e-ctt">
                     <div>
-                        <div>區域 E</div>
+                        <h2>關於礦坑增量</h2>
+                        <div class="Pr">
+                            <div class="Value">遊戲目標</div>
+                            <ul>
+                                <li>長按挖礦，累積資源</li>
+                                <li>升級技能，突破極限</li>
+                                <li>解鎖隱藏彩蛋，發現驚喜</li>
+                            </ul>
+                            <div class="Value">一層核心機制</div>
+                            <ul>
+                                <li><strong>長按時間</strong>：決定挖掘類型（失敗／略微／精準／一般／精準蓄力／蓄力）</li>
+                                <li><strong>礦物權重</strong>：受「礦脈」影響，後期稀有礦物出現率提升</li>
+                                <li><strong>爆擊系統</strong>：會心（機率）、心脈（倍率），爆發爽感</li>
+                                <li><strong>技能疊乘</strong>：力量（蓄力）、判分（精準）、兜底（略微），自由配裝</li>
+                            </ul>
+                            <div class="Value">主題切換</div>
+                            <ul>
+                                <li>設定頁面可切換「礦洞亮」、「科技暗」、「極致亮」</li>
+                                <li>還有一個隱藏主題……</li>
+                            </ul>
+                        </div>
+
+                        <h2>版本資訊</h2>
+                        <div class="Pr">
+                            <div class="Value">當前版本：v0.0.2</div>
+                            <ul>
+                                <li>新增 5 項升級</li>
+                                <li>新增 ×100 批量操作</li>
+                                <li>修正燒煉顯示 Bug</li>
+                                <li>平衡性調整</li>
+                                <li>新增極致亮主題</li>
+                            </ul>
+                            <div><i>完整更新日誌請見「版本日誌」分頁</i></div>
+                        </div>
                     </div>
                 </div>
                 <div class="Area" id="area-ea-ctt">
                     <div>
-                        <h2>礦坑增量 v0.0.1 <span class='Value'>2026-06-21</span></h2>
+                        <h2>v0.0.1 <span class='Value'>2026-06-21</span></h2>
                         <div class='Pr'>
                             <div class='Value'>新增主區域一層遊戲內容（平衡性未測試）</div>
                             <ul>
@@ -176,11 +238,63 @@
                             <div class='Value'>新增 0 條成就</div>
                             <div class='Value'>新增 3 條隱藏成就</div>
                         </div>
+                        <h2>v0.0.2 <span class='Value'>2026-06-22</span></h2>
+                        <div class='Pr'>
+                            <div class='Value'>豐富主區域一層遊戲內容</div>
+                            <ul>
+                                <li>新增 5 項升級</li>
+                                <li>新增 ×100 批量操作</li>
+                                <li>平衡性調整</li>
+                            </ul>
+                            <div class='Value'>新增極致亮主題</div>
+                            <div class='Value'>新增 4 條 Tips</div>
+                            <div class='Value'>新增 0 條成就</div>
+                            <div class='Value'>新增 1 條隱藏成就</div>
+                            <div class='Value'>修正 Bug</div>
+                            <ul>
+                                <li>修正燒煉上浮文字皆顯示「+石頭」的 Bug</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="Area" id="area-f-ctt">
                     <div>
-                        <div>區域 F</div>
+                        <h2>一層指南</h2>
+                        <div class="Pr">
+                            <div class="Value">1. 挖礦</div>
+                            <ul>
+                                <li>在「主區域 → 一層」找到礦主按鈕</li>
+                                <li><strong>長按</strong>礦主按鈕，進度條會開始填充</li>
+                                <li>放開時根據按壓時間決定挖掘結果：</li>
+                                <ul>
+                                    <li>綠區：<span style="color:#00ff00;">略微採集</span>（少量產出）</li>
+                                    <li>黃區：<span style="color:#ffff00;">精準採集</span>（倍率 ×2）</li>
+                                    <li>藍區：<span style="color:#0080ff;">一般採集</span>（基礎產出）</li>
+                                    <li>橙區：<span style="color:#ff8d00;">精準蓄力採集</span>（倍率 ×6）</li>
+                                    <li>紅區：<span style="color:#ff0000;">蓄力採集</span>（倍率 ×3）</li>
+                                </ul>
+                                <li style="margin-top:4px;">提示：進度條有顏色分段，可以當作視覺輔助</li>
+                            </ul>
+                            <div class="Value">2. 升級與技能</div>
+                            <ul>
+                                <li><strong>升級</strong>（礦主、礦工、礦脈、礦鎬）：提升基礎能力</li>
+                                <li><strong>強化</strong>（會心、心脈、力量、判定、判分）：後期配裝核心，疊乘效應極強</li>
+                                <li><strong>技能</strong>（蓄力採集、精準採集、略微採集、蓄力精準採集）：先解鎖才能使用對應挖掘類型</li>
+                                <li>提示：前期先點「礦主」、「礦鎬」，CP值最高；需要高級礦物時點「礦脈」</li>
+                            </ul>
+                            <div class="Value">3. 資源與合成</div>
+                            <ul>
+                                <li><strong>市場</strong>：把礦物賣成金幣（金幣用來升級礦脈）</li>
+                                <li><strong>燒煉</strong>：把原礦燒成成品（石頭、鐵錠、金錠、鑽石）</li>
+                                <li>提示：燒煉需要煤炭當燃料，記得留一些</li>
+                            </ul>
+                            <div class="Value">4. 成就與彩蛋</div>
+                            <ul>
+                                <li>遊戲中有 <strong>3 條隱藏成就</strong>，觸發條件藏在細節裡</li>
+                                <li>設定頁面有一個 <strong>隱藏主題</strong>，該是發動【火眼金睛】的時刻了！</li>
+                                <li>提示：不知道怎麼解時，多看看 Tip 欄</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <button id="goal-iaa-btn">點此獲取成就</button>

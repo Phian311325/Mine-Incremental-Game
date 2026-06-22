@@ -636,6 +636,89 @@ h2 .Value {
     border: 1px solid rgba(136, 221, 255, 0.15);
 }
 
+/* ===== 機率按鈕容器 ===== */
+/* ===== 機率按鈕容器（礦脈專用） ===== */
+button.Info {
+    position: relative;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: #88ddff;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 4px 12px;
+    border-radius: 40px;
+    transition: 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    height: 34px;
+}
+button.Info:hover {
+    background: rgba(136, 221, 255, 0.1);
+}
+button.Info:active {
+    background: rgba(136, 221, 255, 0.2);
+}
+
+/* ===== 浮窗內容（預設隱藏） ===== */
+.Float-Content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a2e;
+    border: 1px solid #333355;
+    border-radius: 12px;
+    padding: 10px 16px;
+    min-width: 150px;
+    z-index: 100;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+    backdrop-filter: blur(4px);
+}
+
+/* 按下按鈕時顯示浮窗 */
+.Info:active .Float-Content {
+    display: block;
+}
+
+/* ===== 浮窗內部文字 ===== */
+.Float-Content .chance-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    font-size: 14px;
+    padding: 3px 0;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.3px;
+    border-bottom: 1px solid rgba(51, 51, 85, 0.2);
+}
+.Float-Content .chance-row:last-of-type {
+    border-bottom: none;
+}
+.Float-Content .chance-row .name {
+    color: #ccddff;
+}
+.Float-Content .chance-row .pct {
+    color: #ffcc66;
+    font-weight: 700;
+    min-width: 60px;
+    text-align: right;
+}
+.Float-Content .divider {
+    border-top: 1px solid #333355;
+    margin: 6px 0 4px 0;
+}
+.Float-Content .footer {
+    font-size: 11px;
+    color: #666688;
+    text-align: center;
+    margin-top: 4px;
+}
+
+
 /* ===== 響應式（手機） ===== */
 @media (max-width: 600px) {
     .Pr {

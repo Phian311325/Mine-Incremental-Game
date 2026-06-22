@@ -12,12 +12,13 @@ function AutoSaveGame() {
 // 讀檔
 function LoadGame() {
     const data = localStorage.getItem('mineGameData');
-    if (!data) { PopTime('area-d-btn', '沒有存檔', '#ff0000ff'); return; }
+    if (!data) { PopTime('area-d-btn', '沒有存檔', '#ff0000ff'); A1UpdateDsp(); return; }
     const parsed = JSON.parse(data);
     Object.assign(USER_DATA, parsed);
     A1UpdateDsp();  // 重新整理所有 UI
     RenderInvisibleGoals();
     UpdateStyle();
+    CheckAprilFool();
     PopTime('area-d-btn', '讀檔成功！', '#00ff00ff');
 }
 
@@ -108,19 +109,35 @@ function UpdateStyle() {
     const themeMap = {
         '礦洞亮': './style/Original.css',
         '科技暗': './style/Dark.css',
-        'ferygwgghhyu': './style/DeepSeek.css'
+        '極致亮': './style/Light.css',
+        '????????????': './style/AprilFool.css',
+        'ferygwgghhyu': './style/Deepseek.css'
     };
     if (themeMap[saved]) {
         document.getElementById('style').href = themeMap[saved];
         // 更新 Active 狀態
-        a(saved);
+        ApplyStyle(saved);
     }
 }
-function a(saved) {
+function ApplyStyle(saved) {
     document.querySelectorAll('#theme > .Big-Btn').forEach(btn => btn.classList.remove('Active'));
+    USER_DATA.style = saved;
     const activeBtn = document.getElementById(`${saved}-theme`) || 
                       document.getElementById('礦洞亮-theme');
     if (activeBtn) activeBtn.classList.add('Active');
+}
+
+function CheckAprilFool() {
+    const today = new Date();
+    if (today.getMonth() === 3 && today.getDate() === 1) {
+        // 4月1日強制啟用愚人節主題
+        document.getElementById(`????????????-theme`).style.display = 'inline-block';
+        document.getElementById('style').href = './style/AprilFool.css';
+        ApplyStyle('????????????');
+    } else {
+        document.getElementById('style').href = './style/Original.css';
+        ApplyStyle('Original');
+    }
 }
 
 window.addEventListener('load', LoadGame);
@@ -133,16 +150,21 @@ setInterval(AutoSaveGame, 30000);
 //樣式切換/////////////////////////////////////////////////////
 document.getElementById('礦洞亮-theme').addEventListener('click', () => {
     document.getElementById('style').href = './style/Original.css';
-    USER_DATA.style = '礦洞亮';
-    a('礦洞亮');
+    ApplyStyle('礦洞亮');
 })
 document.getElementById('科技暗-theme').addEventListener('click', () => {
     document.getElementById('style').href = './style/Dark.css';
-    USER_DATA.style = '科技暗';
-    a('科技暗');
+    ApplyStyle('科技暗');
+})
+document.getElementById('極致亮-theme').addEventListener('click', () => {
+    document.getElementById('style').href = './style/Light.css';
+    ApplyStyle('極致亮');
 })
 document.getElementById('ferygwgghhyu-theme').addEventListener('click', () => {
-    document.getElementById('style').href = './style/DeepSeek.css';
-    USER_DATA.style = 'ferygwgghhyu';
-    a('ferygwgghhyu');
+    document.getElementById('style').href = './style/Deepseek.css';
+    ApplyStyle('ferygwgghhyu');
+})
+document.getElementById('????????????-theme').addEventListener('click', () => {
+    document.getElementById('style').href = './style/AprilFool.css';
+    ApplyStyle('????????????');
 })

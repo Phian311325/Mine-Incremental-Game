@@ -4,23 +4,25 @@
 }
 /*基礎 css*/
 body {
-    background-color: #ccccccff;
+    background-color: #ffffffff;
 }
 h2 {
     font-size: 30px;
+    padding: 0 2px;
     margin: 0;
+    color: #000000ff;
     width: 100%;
-    border-bottom: 1px solid #888888ff;
+    border-bottom: 2px solid #000000ff;
 }
 button {
-    position: relative;
     display: inline-flex;
+    position: relative;
     height: 34px;
     justify-content: center;
-    border: 2px solid #666666ff;
-    border-bottom: 8px solid #888888ff;
-    background-color: #aaaaaaff;
-    box-shadow: 0 1px #666666ff;
+    background-color: #eeeeeeff;
+    border: 2px solid #333333ff;
+    border-bottom: 8px solid #ddddddff;
+    box-shadow: 0 1px #333333ff;
     transition: all 100ms ease;
 }
 button::not(.A1-mine-Btn)::not(.A1-Worker-Btn) > img {
@@ -28,18 +30,19 @@ button::not(.A1-mine-Btn)::not(.A1-Worker-Btn) > img {
     height: 20px;
 }
 button:hover {
-    border: 2px solid #333333ff;
-    border-bottom: 8px solid #888888ff;
-    box-shadow: 0 1px #333333ff;
+    background-color: #ffffffff;
+    border: 2px solid #000000ff;
+    border-bottom: 8px solid #eeeeeeff;
+    box-shadow: 0 1px #000000ff;
 }
 button:active {
     height: 28px;
-    border-bottom: 1px solid #333333ff;
+    border-bottom: 1px solid #000000ff;
     margin-top: 6px;
 }
 hr {
     margin: 0;
-    border: 1px solid #666666ff;
+    border: 1px solid #000000ff;
 }
 ul, ol {
     padding-left: 32px;
@@ -47,10 +50,10 @@ ul, ol {
 }
 ul > li {
     list-style: '— ';
-    color: #555555ff;
+    color: #000000ff;
 }
 h2 > .Value {
-    color: #555555ff;
+    color: #000000ff;
 }
 h2 > .Value::before {
     content: '[';
@@ -67,32 +70,34 @@ h2 > .Value::after {
     height: 4px;
 }
 ::-webkit-scrollbar-track {
-    background: #999999ff;
+    background: #eeeeeeff;
     border-radius: 0;
 }
 ::-webkit-scrollbar-thumb {
-    background: #888888ff;
+    background: #ccccccff;
     border-radius: 0;
+    transition: all 150ms ease;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #777777ff;
+    background: #aaaaaaff;
 }
 
 /*其他按鈕*/
 button.Damager {
-    border: 2px solid #aa0000ff;
-    border-bottom: 8px solid #dd0000ff;
-    background-color: #ff0000ff;
-    box-shadow: 0 1px #aa0000ff;
+    border: 2px solid #ff0000ff;
+    border-bottom: 8px solid #ffccccff;
+    background-color: #ffeeeeff;
+    box-shadow: 0 1px #ff0000ff;
 }
 button.Damager:hover {
-    border: 2px solid #880000ff;
-    border-bottom: 8px solid #cc0000ff;
-    box-shadow: 0 1px #880000ff
+    border: 2px solid #cc0000ff;
+    border-bottom: 8px solid #ffbbbbff;
+    background-color: #ffddddff;
+    box-shadow: 0 1px #cc0000ff;
 }
 button.Damager:active {
     height: 28px;
-    border-bottom: 1px solid #880000ff;
+    border-bottom: 1px solid #cc0000ff;
     margin-top: 6px;
 }
 button.Big-Btn {
@@ -105,30 +110,26 @@ button.Big-Btn:active {
 }
 button.Big-Btn.Active {
     height: 36px;
-    border-bottom: 1px solid #888888ff;
+    border-bottom: 1px solid #000000ff;
     pointer-events: none;
     margin-top: 6px;
 }
 button.Info {
-    height: 34px;
-    border: 2px solid #0055aaff;
-    border-bottom: 8px solid #006eddff;
-    background-color: #0080ffff;
-    box-shadow: 0 1px #0055aaff;
+    border: 2px solid #00ccccff;
+    border-bottom: 8px solid #ccffffff;
+    background-color: #eeffffff;
+    box-shadow: 0 1px #00ccccff;
 }
 button.Info:hover {
-    border: 2px solid #004488ff;
-    border-bottom: 8px solid #0066ccff;
-    box-shadow: 0 1px #004488ff
+    border: 2px solid #009999ff;
+    border-bottom: 8px solid #bbffffff;
+    background-color: #ddffffff;
+    box-shadow: 0 1px #009999ff;
 }
-button.Info:active {
-    height: 28px;
-    border-bottom: 1px solid #004488ff;
-    margin-top: 6px;
+button.Info:Active {
+    border-bottom: 1px solid #009999ff;
 }
-#goal-iaa-btn {
-    z-index: 0;
-}
+
 
 /*特殊容器*/
 .Ore-Dsp-Row {
@@ -182,11 +183,11 @@ button.Info:active {
 }
 .coal-value {
     font-size: 20px;
-    color: #222222ff;
+    color: #444444ff;
 }
 .ironOre-value {
     font-size: 20px;
-    color: #e6e6e6ff;
+    color: #ccccccff;
 }
 .goldOre-value {
     font-size: 20px;
@@ -194,10 +195,10 @@ button.Info:active {
 }
 .diamondOre-value {
     font-size: 20px;
-    color: #00ffffff;
+    color: #00eeeeff;
 }
 .Upg-Value {
-    color: #00cc00ff
+    color: #00cc00ff;
 }
 .Craft-Block-Grid {
     display: grid;
@@ -207,9 +208,11 @@ button.Info:active {
 }
 .Craft-Block {
     padding: 8px;
-    background-color: #999999ff;
-    border: 2px solid #888888ff;
+    background-color: #f8f8f8ff;
+    border: 2px solid #000000ff;
+    color: #000000ff;
     width: 288px;
+    height: auto;
 }
 .Act {
     grid-area: Act;
@@ -223,12 +226,12 @@ button.Info:active {
     top: -8px;
     left: 50%;
     transform: translateX(-50%) translateY(-100%);
-    background: #999999ee;
-    border: 2px solid #777777ee;
+    background: #ffffffee;
+    border: 2px solid #000000ee;
+    box-shadow: #00000033;
     padding: 8px 16px;
     min-width: 120px;
     z-index: 2;
-    box-shadow: 2px 2px #00000033;
     pointer-events: none;
 }
 
@@ -257,7 +260,7 @@ button.Info:active {
     display: grid;
     grid-template-rows: 52px 1fr 46px;
     gap: 2px;
-    background-color: #888888ff;
+    background-color: #000000ff;
     padding: 2px;
     margin: 8px auto;
     width: 976px;
@@ -269,7 +272,7 @@ button.Info:active {
     display: flex;
     gap: 8px;
     overflow: hidden;
-    background-color: #aaaaaaff;
+    background-color: #ffffffff;
     padding: 8px;
     line-height: 1.2;
     align-items: end;
@@ -284,7 +287,7 @@ button.Info:active {
     overflow: hidden;
     height: 36px;
     width: 776px;
-    background-color: #aaaaaaff;
+    background-color: #ffffffff;
     position: relative;
     line-height: 36px;
 }
@@ -311,7 +314,7 @@ button.Info:active {
 .Area-Bar {
     display: flex;
     gap: 8px;
-    background-color: #aaaaaaff;
+    background-color: #ffffffff;
     padding: 8px;
 }
 .Area-Btn {
@@ -322,11 +325,13 @@ button.Info:active {
 }
 .Area-Btn:hover {
     border: 0 solid #11451400;
+    background-color: #00000011;
+    box-shadow: 0 1px #000000ff, 0 0 0 2px #00000008;
 }
 .Area-Btn.Active {
     height: 28px;
-    border-bottom: 2px solid #333333ff;
-    box-shadow: 0 0 #11451400;
+    border-bottom: 2px solid #000000ff;
+    box-shadow: 0 0 #114514ff;
     pointer-events: none;
 }
 
@@ -347,6 +352,9 @@ button.Info:active {
 .Sub-Area-Bar.Show {
     display: flex;
 }
+.Sub-Area-Bar.Active {
+    box-shadow: 0 0 #114514ff;
+}
 .Sub-Area-Bar::-webkit-scrollbar {
     display: none;
 }
@@ -358,7 +366,7 @@ button.Info:active {
 }
 .Area {
     display: none;
-    background-color: #aaaaaaff;
+    background-color: #ffffffff;
     padding: 8px;
     overflow-y: auto;
     width: calc(100% - 16px);
@@ -384,36 +392,38 @@ button.Info:active {
 }
 .A1-mine-Btn {
     grid-area: Btn;
-    border-bottom: 2px solid #666666ff;
+    border-bottom: 2px solid #000000ff;
     padding: 0;
     width: 50px;
     height: 50px;
     box-shadow: none;
+    background-color: #eeeeeeff;
 }
 .A1-mine-Btn:hover {
-    border-bottom: 2px solid #333333ff;
+    border-bottom: 2px solid #000000ff;
     box-shadow: none;
+    background-color: #eeeeeeff;
 }
 .A1-mine-Btn:active {
     height: 50px;
     margin: 0;
-    background-color: #999999ff;
+    background-color: #eeeeeeff;
 }
 .A1-Miner-Bar {
     grid-area: Bar;
     height: 100%;
     width: 100%;
-    background-color: #11451400;
+    background-color: #eeeeeeff;
 }
 .A1-Worker-Bar {
     grid-area: Bar;
     height: 100%;
     width: 100%;
-    background-color: #11451400;
+    background-color: #eeeeeeff;
 }
 .A1-Progress {
     background-color: #11451400;
-    border-right: 2px solid #666666ff;
+    border-right: 2px solid #000000ff;
     height: 25px;
     width: 10%;
 }
@@ -424,20 +434,20 @@ button.Info:active {
     grid-area: Role;
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    border-right: 2px solid #888888ff;
+    border-right: 2px solid #000000ff;
     font-size: 20px;
 }
 
 /*成就*/
 .Invisible-Unlocked {
-    border: 2px solid #990099ff;
-    background-color: #99009a33;
-    color: #990099ff;
+    border: 2px solid #ff66ffff;
+    background-color: #ffccffff;
+    color: #cc00ccff;
 }
 .Goal-Locked {
-    color: #666666ff;
+    border: 2px solid #eeeeeeff;
+    color: #ccccccff;
 }
-
 
 /*最終狀態*/
 .Disable {
@@ -455,7 +465,6 @@ button.Info:active {
 .Invisible:hover {
     opacity: 0.05;
 }
-
 
 /*動畫*/
 @keyframes SlideIn {
@@ -546,7 +555,12 @@ button.Info:active {
     }
     .Invisible {
         opacity: 0.025;
-    }   
+    }  
+    .Float-Content {
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
 }
 @media (max-width: 768px) {
     .Setting-Btn-Row {

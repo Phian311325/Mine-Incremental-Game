@@ -16,6 +16,7 @@ h2 {
 }
 button {
     display: inline-flex;
+    position: relative;
     height: 34px;
     justify-content: center;
     background-color: #202080ff;
@@ -84,19 +85,15 @@ h2 > .Value::after {
 
 /*其他按鈕*/
 button.Damager {
-    border: 2px solid #888888ff;
     border-bottom: 8px solid #cc0000ff;
     background-color: #ff0000ff;
-    box-shadow: 0 1px #888888ff;
 }
 button.Damager:hover {
-    border: 2px solid #888888ff;
-    border-bottom: 8px solid #aa0000ff;
-    box-shadow: 0 1px #888888ff
+    border-bottom: 8px solid #dd0000ff;
 }
 button.Damager:active {
     height: 28px;
-    border-bottom: 1px solid #888888ff;
+    border-bottom: 1px solid #ccccccff;
     margin-top: 6px;
 }
 button.Big-Btn {
@@ -112,6 +109,16 @@ button.Big-Btn.Active {
     border-bottom: 1px solid #888888ff;
     pointer-events: none;
     margin-top: 6px;
+}
+button.Info {
+    border-bottom: 8px solid #0066ccff;
+    background-color: #0080ffff;
+}
+button.Info:hover {
+    border-bottom: 8px solid #0077ddff;
+}
+button.Info:Active {
+    border-bottom: 1px solid #888888ff;
 }
 
 /*特殊容器*/
@@ -208,6 +215,40 @@ button.Big-Btn.Active {
 }
 .Act-B {
     grid-area: Act-B;
+}
+.Float-Content {
+    display: none;
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    background: #111111ee;
+    border: 2px solid #ddddddee;
+    padding: 8px 16px;
+    min-width: 120px;
+    z-index: 2;
+    box-shadow: 0 0 0 1px #dddddd22, 0 0 0 2px #dddddd22, 0 0 0 3px #dddddd22, 0 0 0 4px #dddddd22;
+    pointer-events: none;
+}
+
+/* 按下按鈕時顯示浮窗 */
+.Info:active .Float-Content {
+    display: block;
+}
+
+/* ===== 浮窗內部文字 ===== */
+.Float-Content .chance-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+.Float-Content .chance-row .name {
+    font-size: 18px;
+}
+.Float-Content .chance-row .pct {
+    text-align: right;
+    font-size: 18px;
 }
 
 /*主區域*/
@@ -329,6 +370,7 @@ button.Big-Btn.Active {
     overflow-y: auto;
     width: calc(100% - 16px);
     height: calc(100% - 16px);
+    z-index: 1;
 }
 .Area > div {
     width: 100%;

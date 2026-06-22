@@ -11,7 +11,7 @@ function SetupBar(Selector) {
     return ctx;
 }
 //彈出提示（從按鈕位置上浮並虛化）//////////////
-function PopTime(target, desc, color) {
+function PopTime(target, desc, color, bold) {
     const btn = document.getElementById(target);
     if (!btn) return;
     // 獲取按鈕位置
@@ -20,7 +20,7 @@ function PopTime(target, desc, color) {
     const pop = document.createElement('div');
     pop.textContent = desc;
     pop.style = `position: fixed; left: ${rect.left}px; top: ${rect.top}px; color: ${color}; font-size: 18px;` + 
-                `text-shadow: 1px 1px #000000cc; pointer-events: none; z-index: 1`;
+                `text-shadow: 1px 1px #000000cc; pointer-events: none; z-index: 1; font-weight: ${(bold) ? '700' : '400'}`;
     document.body.appendChild(pop);
     // 動畫：上浮 + 虛化
     let startTime = performance.now();
@@ -68,5 +68,10 @@ function PickReward(rewards, given) {
 function cbrtSoftCap(value, cap) {
     let m = value / cap
     if (m > 1) m = Math.cbrt(m) //開立方根也會使數值趨近於 1
+    return cap * m;
+};
+function hcrtSoftCap(value, cap) {
+    let m = value / cap
+    if (m > 1) m = Math.sqrt(Math.sqrt(m)) //開超立方根也會使數值趨近於 1
     return cap * m;
 };
