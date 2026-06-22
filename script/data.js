@@ -36,9 +36,9 @@ const CONFIG_DATA = {
     //區域一升級
     a1MinerEffect:  1,    a1OreEffect:  1,    a1WorkerEffect:  0,    a1AccyEffect: 10,     a1CritRateEffect:  4,    a1CritDmgEffect:  1.5,  
     a1MinerCost:    3,    a1OreCost:   40,    a1WorkerCost:   10,    a1AccyCost:   30,     a1CritRateCost:    2,    a1CritDmgCost:   20,
-    a1MinerMax:    28,    a1OreMax:    26,    a1WorkerMax:    14,    a1AccyMax:    12,     a1CritRateMax:    16,    a1CritDmgMax:    15,
+    a1MinerMax:    28,    a1OreMax:    22,    a1WorkerMax:    14,    a1AccyMax:    12,     a1CritRateMax:    16,    a1CritDmgMax:    15,
     a1MinerAdd:     0.25, a1OreAdd:     1.3, a1WorkerAdd:      0.08, a1AccyAdd:     1.5,   a1CritRateAdd:     0.5,  a1CritDmgAdd:     0.1,
-    a1MinerMul:     1.28, a1OreMul:     1.32, a1WorkerMul:     1.47,  a1AccyMul:    1.37,  a1CritRateMul:     1.44, a1CritDmgMul:     1.36,
+    a1MinerMul:     1.28, a1OreMul:     1.39, a1WorkerMul:     1.47,  a1AccyMul:    1.37,  a1CritRateMul:     1.44, a1CritDmgMul:     1.36,
 
     a1PowerEffect:  2,    a1ShortEffect:  0.16, a1PreciseEffect:  1.2,
     a1PowerCost:    3,    a1ShortCost:   50,    a1PreciseCost:   10,
