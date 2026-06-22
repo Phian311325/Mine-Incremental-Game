@@ -183,6 +183,9 @@ function A1EndPress() {
     //判定
     A1GetOres(duration);
 }
+function A1EndAtLeave() {
+    if (isPressing) A1EndPress();
+}
 // 綁定事件（支援滑鼠與觸控）
 minerBtn.addEventListener('mousedown', A1StartPress);
 window.addEventListener('mouseup', A1EndPress);
@@ -190,9 +193,7 @@ window.addEventListener('mouseup', A1EndPress);
 minerBtn.addEventListener('touchstart', A1StartPress);
 window.addEventListener('touchend', A1EndPress);
 // 防止滑鼠離開按鈕時還算按壓（可選）
-minerBtn.addEventListener('mouseleave', () => {
-    if (isPressing) A1EndPress();
-});
+minerBtn.addEventListener('mouseleave', A1EndAtLeave);
 //手動挖礦判定//////////
 function A1GetMineType(T) {
     const { a1ShortT: sT, a1AccyNormalT: anT, a1NormalT: nT, a1AccyLongT: alT, a1LongT: lT, a1PowerEffect: lRP, a1PreciseEffect:AP/*收歌（確信)*/, } = USER_DATA;

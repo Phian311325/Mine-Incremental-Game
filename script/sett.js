@@ -111,7 +111,7 @@ function UpdateStyle() {
         '科技暗': './style/Dark.css',
         '極致亮': './style/Light.css',
         '????????????': './style/AprilFool.css',
-        'ferygwgghhyu': './style/Deepseek.css'
+        'ferygwgghhyu': './style/DeepSeek.css'
     };
     if (themeMap[saved]) {
         document.getElementById('style').href = themeMap[saved];
@@ -130,7 +130,7 @@ function ApplyStyle(saved) {
 function CheckAprilFool() {
     const today = new Date();
     if (today.getMonth() === 3 && today.getDate() === 1) {
-        // 4月1日強制啟用愚人節主題
+        // 4月1日強制啟用愚人節樣式
         document.getElementById(`????????????-theme`).style.display = 'inline-block';
         document.getElementById('style').href = './style/AprilFool.css';
         ApplyStyle('????????????');
@@ -161,7 +161,7 @@ document.getElementById('極致亮-theme').addEventListener('click', () => {
     ApplyStyle('極致亮');
 })
 document.getElementById('ferygwgghhyu-theme').addEventListener('click', () => {
-    document.getElementById('style').href = './style/Deepseek.css';
+    document.getElementById('style').href = './style/DeepSeek.css';
     ApplyStyle('ferygwgghhyu');
 })
 document.getElementById('????????????-theme').addEventListener('click', () => {
