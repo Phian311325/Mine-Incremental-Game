@@ -1,3 +1,3 @@
 # Mine-Incremental-Game
 
-This is a game by me.
+爛尾廢檔 owo
